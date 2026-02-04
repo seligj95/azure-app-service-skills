@@ -18,6 +18,7 @@ npx skills add seligj95/azure-app-service-skills
 | **azure-app-service-security** | Managed Identity, Key Vault integration, Easy Auth, access restrictions, TLS |
 | **azure-app-service-networking** | VNet integration, private endpoints, Front Door, Traffic Manager, hybrid connections |
 | **azure-app-service-environment** | App Service Environment v3 for isolated, dedicated deployments |
+| **azure-app-service-managed-instance** | Managed Instance (preview) for legacy Windows apps requiring OS customization, COM, registry |
 | **azure-app-service-troubleshooting** | HTTP error diagnosis, startup failures, Kudu tools, auto-heal configuration |
 
 ## When to Use
@@ -31,6 +32,7 @@ These skills are automatically triggered when you're working on:
 - Optimizing performance and scaling
 - Implementing networking (VNet, private endpoints)
 - Working with App Service Environment (ASE)
+- Migrating legacy Windows apps with Managed Instance
 
 ## Skill Details
 
@@ -74,6 +76,14 @@ Isolated environment for sensitive workloads:
 - Internal vs external load balancer
 - Zone redundancy
 - DNS and certificate configuration
+
+### Managed Instance (Preview)
+Legacy Windows app migration with OS customization:
+- PowerShell configuration scripts for COM, registry, MSI
+- Storage mounts (Azure Files, UNC paths)
+- Registry key adapters with Key Vault integration
+- RDP access via Azure Bastion for diagnostics
+- Pv4/Pmv4 SKUs only
 
 ### Troubleshooting
 Diagnostics and problem resolution:

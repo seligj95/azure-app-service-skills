@@ -226,4 +226,5 @@ npx skills add seligj95/azure-app-service-skills
 | `azure-app-service-security` | Managed Identity, Key Vault integration, Easy Auth, access restrictions |
 | `azure-app-service-networking` | VNet integration, private endpoints, Front Door, Traffic Manager |
 | `azure-app-service-environment` | App Service Environment v3 for isolated, dedicated deployments |
+| `azure-app-service-managed-instance` | Legacy Windows apps requiring COM, registry, MSI (Pv4/Pmv4 preview) |
 | `azure-app-service-troubleshooting` | HTTP error diagnosis, startup failures, Kudu tools, auto-heal |
