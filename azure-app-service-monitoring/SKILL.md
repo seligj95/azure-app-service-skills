@@ -312,5 +312,5 @@ az webapp log download \
 
 ## References
 
-- **KQL Queries**: See [references/kql-queries.md](references/kql-queries.md) for more query examples
-- **Dashboard Templates**: See [references/dashboards.md](references/dashboards.md) for Azure Dashboard JSON templates
+- **KQL Queries**: See [references/kql-queries.md](references/kql-queries.md) for comprehensive query examples
+- **Alert Templates**: See [references/alert-templates.md](references/alert-templates.md) for alert configuration

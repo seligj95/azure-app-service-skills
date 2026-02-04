@@ -95,8 +95,4 @@ These skills work with any agent that supports the [Agent Skills](https://agents
 
 ## Contributing
 
-Issues and pull requests welcome! Please open an issue to discuss changes before submitting a PR.
-
-## License
-
-MIT
+Issues and pull requests welcome!

@@ -361,5 +361,4 @@ See [Azure documentation](https://learn.microsoft.com/en-us/azure/app-service/en
 
 ## References
 
-- **Networking Patterns**: See [references/ase-networking.md](references/ase-networking.md)
-- **Sizing Guide**: See [references/ase-sizing.md](references/ase-sizing.md)
+- **ASE Configuration**: See [references/ase-configuration.md](references/ase-configuration.md) for detailed setup and configuration

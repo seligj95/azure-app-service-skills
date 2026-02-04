@@ -158,7 +158,7 @@ az webapp config appsettings set --name myapp --resource-group myrg \
 
 **Priority:** MEDIUM
 
-Use VNet integration to securely access backend services.
+Use VNet integration to secure outbound connections and securely access backend services.
 
 ### Why It Matters
 

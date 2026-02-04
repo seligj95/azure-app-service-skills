@@ -50,7 +50,7 @@ Reference these guidelines when:
 | `reliability-health-check` | Configure health check endpoint for load balancer probing |
 | `reliability-deployment-slots` | Use staging slots for zero-downtime deployments |
 | `reliability-auto-heal` | Enable auto-heal rules for automatic recovery |
-| `reliability-zone-redundancy` | Enable zone redundancy for production (Premium v3) |
+| `reliability-zone-redundancy` | Enable zone redundancy for production (Premium v3, Premium v4, Isolated v2) |
 | `reliability-backup` | Configure automated backups for stateful apps |
 | `reliability-multi-region` | Use Traffic Manager or Front Door for multi-region HA |
 
@@ -190,8 +190,14 @@ az monitor autoscale rule create \
 | Dev/Test | F1, B1 | Low cost, sufficient for testing |
 | Low-traffic production | B1, S1 | Always On, custom domains, SLA |
 | Standard production | S1-S3 | Autoscale, slots, backups |
-| High-performance | P1V2-P3V2 | More memory/CPU, faster storage |
-| Mission-critical | P1V3-P3V3 | Zone redundancy, best performance |
+| Production (preferred) | P0V4-P3V4 | Latest generation, ARM64 support, best perf/cost |
+| Production (fallback) | P0V3-P3V3 | Use if P*V4 not available in region |
+| Memory-optimized (preferred) | P1MV4-P5MV4 | ARM64 with higher memory-to-core ratio |
+| Memory-optimized (fallback) | P1MV3-P5MV3 | Use if P*MV4 not available in region |
+| Isolated/Dedicated | I1V2-I6V2 | App Service Environment, single-tenant |
+| Isolated memory-optimized | I1MV2-I5MV2 | ASE with higher memory-to-core ratio |
+
+> **Note**: P*V2 SKUs are legacy. Always prefer P*V4 (or P*V3 if V4 unavailable).
 
 ## References
 

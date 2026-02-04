@@ -365,5 +365,5 @@ echo "✅ Security hardening complete"
 
 ## References
 
-- **Key Vault Patterns**: See [references/keyvault.md](references/keyvault.md) for advanced Key Vault integration
-- **Authentication Providers**: See [references/auth-providers.md](references/auth-providers.md) for Google, GitHub, etc.
+- **Managed Identity Guide**: See [references/managed-identity-guide.md](references/managed-identity-guide.md) for identity configuration
+- **Key Vault Integration**: See [references/keyvault-integration.md](references/keyvault-integration.md) for secret management

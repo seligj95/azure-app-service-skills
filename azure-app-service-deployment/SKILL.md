@@ -373,5 +373,5 @@ az webapp log tail --name <app> --resource-group <rg>
 
 ## References
 
-- **GitHub Actions Workflows**: See [references/github-actions.md](references/github-actions.md) for more workflow examples
-- **Slot Configuration**: See [references/slots.md](references/slots.md) for advanced slot patterns
+- **GitHub Actions Workflows**: See [references/github-actions-templates.md](references/github-actions-templates.md) for complete workflow templates
+- **Slot Configuration**: See [references/slot-swap-patterns.md](references/slot-swap-patterns.md) for advanced slot patterns

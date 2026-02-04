@@ -358,5 +358,5 @@ az network private-dns link vnet list \
 
 ## References
 
-- **Private Endpoint Patterns**: See [references/private-endpoints.md](references/private-endpoints.md)
-- **Front Door Configuration**: See [references/front-door.md](references/front-door.md)
+- **VNet Integration Guide**: See [references/vnet-integration-guide.md](references/vnet-integration-guide.md) for outbound connectivity
+- **Private Endpoint Guide**: See [references/private-endpoint-guide.md](references/private-endpoint-guide.md) for inbound connectivity

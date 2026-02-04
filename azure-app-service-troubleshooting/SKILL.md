@@ -403,5 +403,5 @@ Automatically restart app based on conditions:
 
 ## References
 
-- **KQL Queries**: See [references/diagnostic-queries.md](references/diagnostic-queries.md)
-- **Auto-Heal Patterns**: See [references/auto-heal.md](references/auto-heal.md)
+- **Troubleshooting Runbooks**: See [references/runbooks.md](references/runbooks.md) for step-by-step guides
+- **Kudu Tools**: See [references/kudu-tools.md](references/kudu-tools.md) for diagnostic tools reference
