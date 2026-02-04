@@ -35,22 +35,79 @@ az webapp vnet-integration add \
   --subnet integration-subnet
 ```
 
-### Route All Traffic Through VNet
+### Route Traffic Through VNet
 
-By default, only RFC1918 traffic (private IPs) routes through VNet.
+By default, only RFC1918 traffic (private IPs) routes through VNet. Use the new `outboundVnetRouting` properties:
 
 ```bash
-# Route ALL outbound traffic through VNet (including internet)
+# Route ALL outbound traffic (application + configuration) - RECOMMENDED
+az resource update \
+  --resource-group <rg> \
+  --name <app-name> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.allTraffic=true
+
+# Route only application traffic (configuration uses public route)
+az resource update \
+  --resource-group <rg> \
+  --name <app-name> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.applicationTraffic=true
+
+# Disable VNet routing
+az resource update \
+  --resource-group <rg> \
+  --name <app-name> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.allTraffic=false
+```
+
+### Granular Configuration Routing
+
+When using `applicationTraffic=true`, you can selectively route configuration traffic:
+
+```bash
+# Route container image pull through VNet
+az resource update \
+  --resource-group <rg> \
+  --name <app-name> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.imagePullTraffic=true
+
+# Route content share (Azure Files) through VNet
+# Note: Ensure NSG allows ports 443 and 445
+az resource update \
+  --resource-group <rg> \
+  --name <app-name> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.contentShareTraffic=true
+
+# Route backup/restore through VNet
+# Note: Database backup not supported over VNet
+az resource update \
+  --resource-group <rg> \
+  --name <app-name> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.backupRestoreTraffic=true
+```
+
+### Legacy Settings (Still Supported)
+
+These legacy settings work but the new `outboundVnetRouting` properties are recommended:
+
+```bash
+# Legacy app setting (deprecated)
 az webapp config appsettings set \
   --name <app-name> \
   --resource-group <rg> \
   --settings WEBSITE_VNET_ROUTE_ALL=1
 
-# Or via CLI (newer method)
-az webapp config set \
-  --name <app-name> \
+# Legacy site property (deprecated)
+az resource update \
   --resource-group <rg> \
-  --vnet-route-all-enabled true
+  --name <app-name> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.vnetRouteAllEnabled=true
 ```
 
 ### Verify Integration

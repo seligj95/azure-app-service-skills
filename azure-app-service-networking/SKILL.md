@@ -57,23 +57,48 @@ az webapp vnet-integration add \
 az webapp vnet-integration list --name <app> --resource-group <rg>
 ```
 
-### Route All Traffic Through VNet
+### Route Traffic Through VNet
 
-By default, only RFC1918 private traffic routes through VNet. To route all traffic:
+By default, only RFC1918 private traffic routes through VNet. Configure routing with the new `outboundVnetRouting` properties:
 
 ```bash
-# Route all outbound traffic through VNet
-az webapp config appsettings set \
-  --name <app> --resource-group <rg> \
-  --settings WEBSITE_VNET_ROUTE_ALL=1
-
-# Or use site property (recommended)
+# Route ALL outbound traffic (application + configuration) through VNet (recommended)
 az resource update \
   --resource-group <rg> \
   --name <app> \
   --resource-type "Microsoft.Web/sites" \
-  --set properties.vnetRouteAllEnabled=true
+  --set properties.outboundVnetRouting.allTraffic=true
+
+# Or route only application traffic (configuration uses public route)
+az resource update \
+  --resource-group <rg> \
+  --name <app> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.applicationTraffic=true
 ```
+
+### Granular Configuration Routing
+
+Route specific configuration traffic through VNet:
+
+```bash
+# Container image pull
+az resource update --resource-group <rg> --name <app> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.imagePullTraffic=true
+
+# Content share (Azure Files)
+az resource update --resource-group <rg> --name <app> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.contentShareTraffic=true
+
+# Backup/restore traffic
+az resource update --resource-group <rg> --name <app> \
+  --resource-type "Microsoft.Web/sites" \
+  --set properties.outboundVnetRouting.backupRestoreTraffic=true
+```
+
+> **Note**: Legacy settings `WEBSITE_VNET_ROUTE_ALL` and `vnetRouteAllEnabled` still work but new `outboundVnetRouting` properties are recommended.
 
 ### Disconnect VNet Integration
 

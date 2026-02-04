@@ -1,6 +1,6 @@
 ---
 name: azure-app-service-environment
-description: Deploy and manage Azure App Service Environments (ASE v3) for isolated, high-scale workloads. Use when requiring complete network isolation, dedicated compute, high scale (200+ instances), compliance requirements, or single-tenant hosting. ASE is a separate product from standard App Service with different pricing and capabilities.
+description: Deploy and manage Azure App Service Environments (ASE v3) for isolated, high-scale workloads. Use when requiring complete network isolation, dedicated compute, high scale (max 200 instances), compliance requirements, or single-tenant hosting. ASE is a separate product from standard App Service with different pricing and capabilities.
 ---
 
 ## When to Apply
@@ -21,7 +21,7 @@ Reference these guidelines when:
 | Network Model | Shared with VNet integration | Deployed directly in VNet |
 | Isolation | Shared infrastructure | Single-tenant, dedicated |
 | Max Scale | 30 instances per plan | 200 instances total |
-| Pricing | Per instance | Per instance + base fee |
+| Pricing | Per instance | Per instance |
 | Setup Complexity | Simple | Requires VNet planning |
 | Cold Start | Possible | Minimal (dedicated) |
 | Private by Default | No (requires PE) | Yes (internal VIP) |
@@ -307,7 +307,7 @@ az appservice plan update \
 
 | Component | Cost Basis |
 |-----------|------------|
-| Base fee | Charged even if empty (equivalent to 1 I1v2 instance) |
+| Base fee | Charged even if empty (equivalent to 1 I1v2 instance). Only charged this fee if ASE is empty. Otherwise, just the instance fees apply. |
 | Instances | Per vCore hour (Isolated v2 rates) |
 | Zone redundancy | No additional charge |
 | Dedicated hosts | Additional per-host fee |
@@ -347,17 +347,6 @@ az appservice ase show --name <ase-name> --resource-group <rg> --query provision
 # View networking info
 az appservice ase list-addresses --name <ase-name> --resource-group <rg>
 ```
-
-## Migration from ASE v2
-
-ASE v3 requires migration from v2. Key differences:
-- No front-end scaling required (automatic)
-- No networking dependencies in customer VNet
-- Zone redundancy support
-- Faster scaling
-- New Isolated v2 SKUs
-
-See [Azure documentation](https://learn.microsoft.com/en-us/azure/app-service/environment/migrate) for migration guide.
 
 ## References
 

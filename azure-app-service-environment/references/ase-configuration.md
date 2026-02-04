@@ -342,7 +342,6 @@ az monitor metrics list \
 
 | Component | Billing |
 |-----------|---------|
-| ASE Stamp Fee | ~$1,000/month (external), ~$700/month (internal) |
 | Isolated SKU | Per instance-hour |
 | Zone Redundancy | 3x minimum instances |
 | Reserved Instances | 1-3 year savings |
